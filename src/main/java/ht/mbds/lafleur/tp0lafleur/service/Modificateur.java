@@ -28,7 +28,20 @@ public class Modificateur implements Serializable { // Car CDI peut mettre l'ins
             // Ajouter le rôle système en majuscule au début du résultat, suivi d'un saut de ligne.
             resultat += roleSysteme.toUpperCase(Locale.FRENCH) + "\n";
         }
-        resultat += question.toLowerCase(Locale.FRENCH) + "||";
+        resultat += question.toLowerCase(Locale.FRENCH) + "||\n";
+        resultat += ("Nombre de mots : ") + compterMots(question) + "\n";
         return resultat;
+    }
+
+    /**
+     * Compter le nombre de mots dans un texte.
+     * @param texte Le texte à analyser.
+     * @return Le nombre de mots dans le texte.
+     */
+    private int compterMots(String texte) {
+        if (texte.isBlank()) {
+            return 0;
+        }
+        return texte.split("\\s+").length;
     }
 }
